@@ -9,15 +9,17 @@ class CurrentHurricane
   end
 
   def storm
-
     x = ""
-      x << @response["currenthurricane"][0]["stormInfo"]["stormName_Nice"]
+      (@response["currenthurricane"]).each do |hurricane|
+      x << hurricane["stormInfo"]["stormName_Nice"]
       x << " Latitude: \n"
-      x << @response["currenthurricane"][1]["Current"]["lat"].to_s
+      x << hurricane["Current"]["lat"].to_s
       x << " Longitude: \n"
-      x << @response["currenthurricane"][1]["Current"]["lon"].to_s
+      x << hurricane["Current"]["lon"].to_s
       x << " Wind Speed:\n"
-      x << @response["currenthurricane"][1]["Current"]["WindSpeed"].to_s
+      x << hurricane["Current"]["WindSpeed"].to_s
+      x << "\n \n"
+    end
     x
   end
 

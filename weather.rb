@@ -24,7 +24,7 @@ puts "The sun will set at #{sunrisets.sunset}"
 
 puts "#{alerts_now.alerts_method}"
 
-#puts "Here are the hurricanes happening all over the WORLD. RIGHT. NOW. #{hurricanes_now.storm}"
+puts "Here are the hurricanes happening all over the WORLD. RIGHT. NOW. \n #{hurricanes_now.storm}"
 
 puts "Your ten day forecast is as follows: \n"  "\n"
 puts "#{ten_day_cast.ten_day}"
