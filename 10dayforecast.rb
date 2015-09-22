@@ -9,7 +9,7 @@ class TenDayCast
 
   private def get_response
     key = ENV['WUNDERGROUND_KEY']
-    HTTParty.get("http://api.wunderground.com/api/#{key}/forecast10day/q/#{zip}.json")
+    HTTParty.get("http://api.wunderground.com/api/#{key}/forecast10day/q/#{@zip}.json")
   end
 
   def one_day_forecast(s)
@@ -17,6 +17,8 @@ class TenDayCast
     d << @response["forecast"]["txt_forecast"]["forecastday"][s]["title"]
     d << "\n"
     d << @response["forecast"]["txt_forecast"]["forecastday"][s]["fcttext"]
+    d << "\n"
+    d << "\n"
 
     d
   end

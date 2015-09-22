@@ -5,6 +5,7 @@ require 'byebug'
 require './current_conditions'
 require './10dayforecast'
 require './sunriseset'
+require './hurricane'
 
 class CurrentConditions
     private def get_response
@@ -16,6 +17,27 @@ end
 class TenDayCast
     private def get_response
       file = File.read("10day.json")
+      hash = JSON.parse(file)
+    end
+end
+
+class SunRiseSet
+    private def get_response
+      file = File.read("astronomy.json")
+      hash = JSON.parse(file)
+    end
+end
+
+class Alertas
+    private def get_response
+      file = File.read("alerts.json")
+      hash = JSON.parse(file)
+    end
+end
+
+class CurrentHurricane
+    private def get_response
+      file = File.read("current_hurricane.json")
       hash = JSON.parse(file)
     end
 end
@@ -47,4 +69,23 @@ class WUndergroundTest < Minitest::Test
     assert_equal "18:43", SunRiseSet.new("02101").sunset
   end
 
+  def alerts
+    assert " ", Alertas.new("02101").alerts
+  end
+
+  def test_current_hurricane
+  assert "Tropical Storm Ida",  CurrentHurricane.new("02101").storm
+  end
+
+  def test_current_hurricane_lat
+  assert 21.2,  CurrentHurricane.new("02101").storm
+  end
+
+  def test_current_hurricane_lon
+  assert -48.8,  CurrentHurricane.new("02101").storm
+  end
+
+  def test_current_hurricane_wind
+  assert 50,  CurrentHurricane.new("02101").storm
+  end
 end
